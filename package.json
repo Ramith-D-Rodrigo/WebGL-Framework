@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ramith-D-Rodrigo/webgl-framework.git"
+    "url": "https://github.com/Ramith-D-Rodrigo/WebGL-Framework.git"
   },
   "dependencies": {
     "@loaders.gl/gltf": "^4.3.3",
