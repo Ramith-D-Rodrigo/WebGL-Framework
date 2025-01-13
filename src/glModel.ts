@@ -5,7 +5,7 @@ import { GLTFLoader, GLTFPostprocessed, postProcessGLTF } from '@loaders.gl/gltf
 import { GLTFMeshPrimitivePostprocessed, GLTFNodePostprocessed, GLTFScenePostprocessed } from "@loaders.gl/gltf/dist/lib/types/gltf-postprocessed-schema";
 import { GLSceneObject } from "./glSceneObject";
 import { mat4, quat, vec3 } from "gl-matrix";
-import { calculateAvgNormal, Mesh, MeshWithTextureType, Model } from "./common";
+import { calculateAvgNormal, Mesh, MeshWithTextureType, Model } from "./common/index";
 
 class GLModel extends Model {
     private textureList: Map<string, GLTexture>;

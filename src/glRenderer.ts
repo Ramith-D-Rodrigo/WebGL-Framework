@@ -8,7 +8,7 @@ import GLModel from "./glModel";
 import GLMesh from "./glMesh";
 import GLTexture from "./glTexture";
 import GLDirectionalLight from "./light/glDirectionalLight";
-import {Renderer} from "./common";
+import {Renderer} from "./common/index";
 import vertexShader from "./shaders/basic/simpleShader.vert.glsl";
 import fragmentShader from "./shaders/basic/simpleShader.frag.glsl";
 import xrVertexShader from "./shaders/xr/simpleShader.vert.glsl";

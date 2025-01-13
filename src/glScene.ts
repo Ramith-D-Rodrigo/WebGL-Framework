@@ -1,4 +1,4 @@
-import {Scene} from "./common";
+import {Scene} from "./common/index";
 import GLTexture from "./glTexture";
 import GLMesh from "./glMesh";
 import { GLSceneObject } from "./glSceneObject";

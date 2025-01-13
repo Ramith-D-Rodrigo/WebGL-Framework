@@ -1,7 +1,7 @@
 import { quat, vec3 } from "gl-matrix";
 import GLMesh from "./glMesh";
 import GLTexture from "./glTexture";
-import { MeshWithTextureType, SceneObject } from "./common";
+import { MeshWithTextureType, SceneObject } from "./common/index";
 
 class GLSceneObject extends SceneObject<GLMesh, GLTexture> {
 
