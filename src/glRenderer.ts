@@ -27,6 +27,10 @@ class GLRenderer extends Renderer<GLMesh, GLTexture> {
     private depthTexture: WebGLTexture | null = null;
 
     public static async RendererInstance(canvas: HTMLCanvasElement | OffscreenCanvas, options: WebGLContextAttributes) : Promise<GLRenderer> {
+        if(GLRenderer.instance) {
+            console.error('Renderer already exists');
+            return GLRenderer.instance;
+        }
         let renderer = new GLRenderer(canvas, null, null, options);
         renderer.init();
         await renderer.loadShader(vertexShader, fragmentShader);
@@ -34,6 +38,10 @@ class GLRenderer extends Renderer<GLMesh, GLTexture> {
     }
 
     public static async RendererInstanceWithSize(canvas: HTMLCanvasElement | OffscreenCanvas, width: number, height: number, options: WebGLContextAttributes) : Promise<GLRenderer> {
+        if(GLRenderer.instance) {
+            console.error('Renderer already exists');
+            return GLRenderer.instance;
+        }
         let renderer = new GLRenderer(canvas, width, height, options);
         renderer.init();
         await renderer.loadShader(vertexShader, fragmentShader);
@@ -41,6 +49,10 @@ class GLRenderer extends Renderer<GLMesh, GLTexture> {
     }
 
     public static async RendererInstanceWithXR(canvas: HTMLCanvasElement | OffscreenCanvas, options: WebGLContextAttributes) : Promise<GLRenderer> {
+        if(GLRenderer.instance) {
+            console.error('Renderer already exists');
+            return GLRenderer.instance;
+        }
         options = {...options, xrCompatible: true};
 
         let renderer = new GLRenderer(canvas, null, null, options);
@@ -49,14 +61,8 @@ class GLRenderer extends Renderer<GLMesh, GLTexture> {
         renderer.initDepthTexture();
         return renderer;
     }
-        
 
     private constructor(canvas: HTMLCanvasElement | OffscreenCanvas, width: number | null, height: number | null, options : WebGLContextAttributes) {
-        if(GLRenderer.instance) {
-            console.error('Renderer already exists');
-            return GLRenderer.instance;
-        }
-
         super(canvas, width, height);
 
         let context : WebGL2RenderingContext | null = canvas.getContext('webgl2', options); //remove css background blending
