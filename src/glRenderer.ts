@@ -293,7 +293,7 @@ class GLRenderer extends Renderer<GLMesh, GLTexture> {
     }
 
 
-    private getUniforms() : Uniforms {
+    public getUniforms() : Uniforms {
         if(!this.shader) {
             throw new Error('Shader is not initialized');
         }
@@ -315,14 +315,14 @@ class GLRenderer extends Renderer<GLMesh, GLTexture> {
         };
     }
 
-    private useLights(scene: GLScene, uniforms: Uniforms) : void {
+    public useLights(scene: GLScene, uniforms: Uniforms) : void {
         const lights = scene.getLights() as GLDirectionalLight[];
         for(let i = 0; i < lights.length; i++) {
             lights[i].useLight(uniforms.uniformAmbientIntensity, uniforms.uniformAmbientColor, uniforms.uniformDiffuseIntensity, uniforms.uniformDirection);
         }
     }
 
-    private renderSceneObject(sceneObject: GLSceneObject, parentModelMatrix: mat4, uniformModel: WebGLUniformLocation, uniformModelInverse: WebGLUniformLocation,
+    public renderSceneObject(sceneObject: GLSceneObject, parentModelMatrix: mat4, uniformModel: WebGLUniformLocation, uniformModelInverse: WebGLUniformLocation,
         uniformTexture: WebGLUniformLocation
     ): void {
         let modelMatrix = sceneObject.calculateModelMatrix();
@@ -374,6 +374,14 @@ class GLRenderer extends Renderer<GLMesh, GLTexture> {
 
     public createDirectionalLight(diffuseIntensity: number, color: vec3, ambientIntensity: number, direction: vec3) : GLDirectionalLight {
         return new GLDirectionalLight(diffuseIntensity, color, ambientIntensity, direction, this.gl);
+    }
+
+    public getScene(){
+        return this.scene;
+    }
+
+    public getShader(){
+        return this.shader;
     }
 
     public clearScene(): void {
